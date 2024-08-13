@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current Time</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="modal.css">
+  <script src="node_modules/dayjs/dayjs.min.js"></script>
+  <script src="node_modules/dayjs/plugin/utc.js"></script>
+  <script src="node_modules/dayjs/plugin/timezone.js"></script>
+  <script src="node_modules/micromodal/dist/micromodal.min.js"></script>
+  <script>
+    dayjs.extend(dayjs_plugin_utc)
+    dayjs.extend(dayjs_plugin_timezone)
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Current Time</h1>
+    <div id="time" class="time-info">
+      <div class="timezone">
+        <p id="current-timezone"></p>
+        <button id="timezone-btn" data-micromodal-trigger="modal-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+        </svg>
+        </button>
+      </div>
+      <p id="current-time"></p>
+      <p id="current-date"></p>
+    </div>
+  </div>
+
+  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-1-title">
+            Change Timezone
+          </h2>
+        </header>
+        <main class="modal__content" id="modal-1-content">
+          <select name="timezone" id="timezone-sel">
+            <option value="" disabled selected>Pick a timezone</option>
+          </select>
+        </main>
+        <footer class="modal__footer">
+          <button class="modal__btn modal__btn-primary" data-micromodal-close>Apply</button>
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js" type="module"></script>
+</body>
+</html>
